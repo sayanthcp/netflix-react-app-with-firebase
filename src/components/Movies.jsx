@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import {FaHeart,FaRegHeart} from 'react-icons/fa'
 
 
+
 const Movies = ({item, id}) => {
     //state
     const [like, setLike] = useState(false)
@@ -17,8 +18,7 @@ const Movies = ({item, id}) => {
         alt="images"
       />
       <div className="absolute top-0 left-0 w-full h-full text-white hover:bg-black/80 opacity-0 hover:opacity-100">
-        <p className="flex justify-center items-center text-center text-xs md:text-sm font-bold h-full">
-          {" "}
+        <p className="whitespace-normal flex justify-center items-center text-center text-xs md:text-sm font-bold h-full">
           {item?.title}
         </p>
         <p>
