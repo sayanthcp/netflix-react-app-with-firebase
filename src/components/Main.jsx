@@ -16,13 +16,13 @@ const Main = () => {
     // console.log(movie);
 
     //trim the overview
-    const shortString = (str, num) => {
-        if(str?.length > num){
-            return str.slice(0, num) + '...' ;
-        } else {
-            return str ;
-        }   
-
+    const trunkCate = (str, num) => {
+        // if(str?.length > num){
+        //     return str.slice(0, num) + '...' ;
+        // } else {
+        //     return str ;
+        // }   
+    return  str?.length > num ? str.slice(0, num) + '...' : str
     }
     
   return (
@@ -39,7 +39,7 @@ const Main = () => {
             <button className='border bg-black text-white px-5 py-2 cursor-pointer border-gray-300 ml-4'>Watch Later</button>
           </div>
           <p className='text-gray-400 font-sm'>Released: {movie?.release_date}</p>
-          <p className='w-full md:max-w-[70%] lg:max-w-[50%] xl:max-w-[35%] text-gray-200'>{shortString(movie?.overview, 200)}</p>
+          <p className='w-full md:max-w-[70%] lg:max-w-[50%] xl:max-w-[35%] text-gray-200'>{trunkCate(movie?.overview, 150)}</p>
         </div>
       
     </div>
