@@ -1,3 +1,4 @@
+//tmdb api key
 const key = '527ce330c1a509bd751bc0e52ac3d786'
 
 const requests = {

@@ -10,18 +10,12 @@ const Main = () => {
     useEffect(() => {
         axios.get(requests.requestPopular).then((response) => {
             setMovies(response.data.results)
-            // console.log(response.data.results);
         })
     },[])
-    // console.log(movie);
+  
 
     //trim the overview
-    const trunkCate = (str, num) => {
-        // if(str?.length > num){
-        //     return str.slice(0, num) + '...' ;
-        // } else {
-        //     return str ;
-        // }   
+    const trunkCate = (str, num) => {     
     return  str?.length > num ? str.slice(0, num) + '...' : str
     }
     

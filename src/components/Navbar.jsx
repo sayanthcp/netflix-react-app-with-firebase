@@ -7,6 +7,7 @@ const Navbar = () => {
 
   const navigate = useNavigate()
 
+  //logout function
   const handleLogout = async () => {
     try {
       await logOut()

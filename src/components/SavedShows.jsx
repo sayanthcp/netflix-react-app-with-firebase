@@ -22,14 +22,15 @@ const SavedShows = () => {
         slide.scrollLeft = slide.scrollLeft + 500
     }
 
+    //added movies in fav list
     useEffect(() => {
         onSnapshot(doc(db, 'users', `${user?.email}`), (doc)=>{
             setMovies(doc.data()?.moviesList)
         })
     },[user?.email])
 
+    //delete movies from database and fav list
     const movieRef = doc(db, 'users', `${user?.email}`)
-
     const deleteShow = async (passedID) => {
         try {
           const result = movies.filter((item) => item.id !== passedID)
@@ -38,6 +39,8 @@ const SavedShows = () => {
             console.log(error);
         }
     }
+
+    
   return (
     <div>
       <h2 className="text-white font-bold p-4 md:text-xl">My Favorites List</h2>

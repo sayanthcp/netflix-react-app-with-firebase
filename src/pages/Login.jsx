@@ -11,6 +11,7 @@ const Login = () => {
   const { logIn } = userAuth();
   const navigate = useNavigate();
 
+  //Login funtion
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");

@@ -5,8 +5,6 @@ import { arrayUnion, doc, updateDoc } from "firebase/firestore";
 import {userAuth} from '../context/AuthContext'
 
 
-
-
 const Movies = ({item, id}) => {
     //state
     const [like, setLike] = useState(false)
@@ -31,8 +29,6 @@ const Movies = ({item, id}) => {
 
     }
 
-
-   
 
   return (
     <div
