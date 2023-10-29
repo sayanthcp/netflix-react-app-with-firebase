@@ -73,11 +73,10 @@ const Row = ({title, fetchURL,rowId}) => {
       </div>
 
       {/* youtube trailers*/}
-      <div>
-        <div>
-          {UrlId && <Youtube opts={opts} videoId={UrlId?.key} className='w-[70%] h-[900px] fixed top-0 bottom-0 left-0 right-0 flex justify-center items-center mx-auto z-[100]' />}         
-        </div>
-      </div>
+      
+        {UrlId && <Youtube opts={opts} videoId={UrlId?.key} />}   
+          
+      
     </>
 
   );
