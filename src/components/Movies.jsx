@@ -5,7 +5,8 @@ import { arrayUnion, doc, updateDoc } from "firebase/firestore";
 import {userAuth} from '../context/AuthContext'
 
 
-const Movies = ({item, id}) => {
+
+const Movies = ({item, id, showTrailerHandler}) => {
     //state
     const [like, setLike] = useState(false)
     const [savedMovies, setSavedMovies] = useState(false)
@@ -31,11 +32,11 @@ const Movies = ({item, id}) => {
 
 
   return (
-    <div
+    <div onClick={()=>showTrailerHandler(item?.id)}
       key={id}
       className="w-[160px] sm:w-[200px] md:w-[240px] lg:w-[280px] inline-block cursor-pointer   relative p-2"
     >
-      <img
+      <img 
         className="w-full h-full block"
         src={`https://image.tmdb.org/t/p/w500/${item?.backdrop_path}`}
         alt="images"

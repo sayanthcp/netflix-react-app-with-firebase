@@ -2,14 +2,17 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import Movies from './Movies'
 import {MdChevronLeft,MdChevronRight} from 'react-icons/md'
+import Youtube from 'react-youtube'
+import {key} from '../Requests'
 
 const Row = ({title, fetchURL,rowId}) => {
     //state
     const [movies, setMovies] = useState([])
+    const [UrlId,setUrlId] = useState("")
 
     useEffect(()=>{
         axios.get(fetchURL).then((res)=> {
-            setMovies(res.data.results)
+            setMovies(res.data?.results)
         })
     },[fetchURL])
 
@@ -24,6 +27,26 @@ const Row = ({title, fetchURL,rowId}) => {
         const slide = document.getElementById('slider' + rowId)
         slide.scrollLeft = slide.scrollLeft + 500
     }
+
+    //show trailer handler
+    const showTrailerHandler = (movieId) => {
+      axios.get(`https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${key}&language=en-US`).then((response)=>{
+        if(response.data?.results.length !==0){
+          setUrlId(response.data?.results[0])
+          console.log(response.data);
+        }else{
+          console.log("NO movies found");
+        }
+      })
+    }
+
+    const opts = {
+      height: '450',
+      width: '100%',
+      playerVars: {
+        autoplay: 1,
+      },
+    };
   return (
     <>
       <h2 className="text-white font-bold p-4 md:text-xl">{title}</h2>
@@ -38,7 +61,7 @@ const Row = ({title, fetchURL,rowId}) => {
           className="w-full h-full overflow-x-scroll whitespace-nowrap scroll-smooth scrollbar-hide"
         >
           {movies?.map((item, id) => (
-            <Movies item={item} key={id} />
+            <Movies item={item} key={id} showTrailerHandler={showTrailerHandler}/>
           ))}
         </div>
         <MdChevronRight
@@ -46,8 +69,17 @@ const Row = ({title, fetchURL,rowId}) => {
           size={40}
           className="bg-white rounded-full absolute right-0 opacity-50 hover:opacity-100 cursor-pointer z-10 hidden group-hover:block"
         />
+
+      </div>
+
+      {/* youtube trailers*/}
+      <div>
+        <div>
+          {UrlId && <Youtube opts={opts} videoId={UrlId?.key} className='w-[70%] h-[900px] fixed top-0 bottom-0 left-0 right-0 flex justify-center items-center mx-auto z-[100]' />}         
+        </div>
       </div>
     </>
+
   );
 }
 

@@ -1,5 +1,5 @@
 //tmdb api key
-const key = '527ce330c1a509bd751bc0e52ac3d786'
+ export const key = '527ce330c1a509bd751bc0e52ac3d786'
 
 const requests = {
     requestPopular: `https://api.themoviedb.org/3/movie/popular?api_key=${key}&language=en-US&page=1`,
