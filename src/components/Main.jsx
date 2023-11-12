@@ -3,19 +3,19 @@ import requests from '../Requests'
 import axios from 'axios'
 
 const Main = () => {
-    const [movies, setMovies] = useState([])
+  //state
+    const [mainMovies, setMainMovies] = useState([])
 
-    const movie = movies[Math.floor(Math.random() * movies.length)]
+    const movie = mainMovies[Math.floor(Math.random() * mainMovies.length)]
 
     useEffect(() => {
         axios.get(requests.requestPopular).then((response) => {
-            setMovies(response.data.results)
+          setMainMovies(response.data.results)
         })
     },[])
   
-
     //trim the overview
-    const trunkCate = (str, num) => {     
+    const trunkcateOverview = (str, num) => {     
     return  str?.length > num ? str.slice(0, num) + '...' : str
     }
     
@@ -29,11 +29,11 @@ const Main = () => {
         <div className='absolute top-[20%] w-full p-4 md:p-8'>
             <h1 className='text-3xl md:text-5xl font-bold'>{movie?.title}</h1>
           <div className='my-4'>
-            <button className='border bg-gray-300 text-black px-5 py-2 cursor-pointer border-gray-300'>Play</button>
-            <button className='border bg-black text-white px-5 py-2 cursor-pointer border-gray-300 ml-4'>Watch Later</button>
+            <button className='border bg-gray-300 text-black px-5 py-2 cursor-pointer border-gray-300 hover:opacity-50'>Play</button>
+            <button className='border bg-black text-white px-5 py-2 cursor-pointer border-gray-300 ml-4 hover:opacity-50'>Watch Later</button>
           </div>
           <p className='text-gray-400 font-sm'>Released: {movie?.release_date}</p>
-          <p className='w-full md:max-w-[70%] lg:max-w-[50%] xl:max-w-[35%] text-gray-200'>{trunkCate(movie?.overview, 150)}</p>
+          <p className='w-full md:max-w-[70%] lg:max-w-[50%] xl:max-w-[35%] text-gray-200'>{trunkcateOverview(movie?.overview, 150)}</p>
         </div>
       
     </div>

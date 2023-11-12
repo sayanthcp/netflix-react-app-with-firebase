@@ -6,6 +6,7 @@ import { userAuth } from "../context/AuthContext";
 import {AiOutlineCloseCircle} from 'react-icons/ai'
 
 const SavedShows = () => {
+  //state
     const [movies,setMovies] = useState([])
 
     const {user} = userAuth()

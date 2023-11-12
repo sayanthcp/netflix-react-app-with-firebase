@@ -40,13 +40,15 @@ const Row = ({title, fetchURL,rowId}) => {
       })
     }
 
+    //youtube screen player
     const opts = {
-      height: '450',
+      height: '500',
       width: '100%',
       playerVars: {
         autoplay: 1,
       },
     };
+
   return (
     <>
       <h2 className="text-white font-bold p-4 md:text-xl">{title}</h2>
@@ -61,7 +63,9 @@ const Row = ({title, fetchURL,rowId}) => {
           className="w-full h-full overflow-x-scroll whitespace-nowrap scroll-smooth scrollbar-hide"
         >
           {movies?.map((item, id) => (
+
             <Movies item={item} key={id} showTrailerHandler={showTrailerHandler}/>
+
           ))}
         </div>
         <MdChevronRight

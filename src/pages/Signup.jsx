@@ -21,7 +21,6 @@ const Signup = () => {
       await signUp(email, password);
       navigate('/')
     } catch (e) {
-      console.log(e.message);
       setError(e.message);
     }
   };

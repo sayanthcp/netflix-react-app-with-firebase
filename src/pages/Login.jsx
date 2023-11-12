@@ -50,7 +50,7 @@ const Login = () => {
                       <p>
                         <PiWarningCircleFill className="mr-1" />
                       </p>
-                      <p>{error}</p>
+                      <p>Invalid email</p>
                     </div>
                   ) : null}
                 </>
@@ -69,7 +69,7 @@ const Login = () => {
                       <p>
                         <PiWarningCircleFill className="mr-1" />
                       </p>
-                      <p>{error}</p>
+                      <p>Invaild password</p>
                     </div>
                   ) : null}
                 </>
